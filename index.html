@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dicionário de Dados - Don Carlini Ristorante</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg topbar fixed-top px-3 shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold text-light" href="./index.html">
+                <i class="fa-solid fa-database me-2"></i>Don Carlini Ristorante | Dicionário de Dados
+            </a>
+            <div class="d-flex align-items-center gap-3">
+                <button class="btn btn-outline-light btn-sm" id="themeToggleBtn" title="Alternar Tema">
+                    <i class="fa-solid fa-moon" id="themeIcon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid main-container">
+        <div class="row">
+            
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar collapse p-3">
+                <div class="position-sticky pt-3">
+                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase fs-7">
+                        <span>Tabelas do Sistema</span>
+                    </h6>
+                    <ul class="nav flex-column mb-2" id="sidebarNavList">
+                        <li class="nav-item"><a class="nav-link" href="#categoria_ingrediente">categoria_ingrediente</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#categoria_prato">categoria_prato</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#cliente">cliente</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#cliente_fidelidade">cliente_fidelidade</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#conta">conta</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#cupom_desconto">cupom_desconto</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#cupom_dia_semana">cupom_dia_semana</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#fornecedor">fornecedor</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#funcionario">funcionario</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#historico_status_pedidos">historico_status_pedidos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#ingrediente">ingrediente</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#item_pedido">item_pedido</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#local_armazenamento">local_armazenamento</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#log_auditoria">log_auditoria</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#lote_estoque">lote_estoque</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#mesa">mesa</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#movimentacao_estoque">movimentacao_estoque</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#movimentacao_estoque_pedido">movimentacao_estoque_pedido</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#movimentacao_financeira">movimentacao_financeira</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#pagamento">pagamento</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#pedido">pedido</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#pedido_externo">pedido_externo</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#perfil_acesso">perfil_acesso</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#prato">prato</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#prato_ingrediente">prato_ingrediente</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#prato_restricao">prato_restricao</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#pagamento">pagamento</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#pedido">pedido</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#pedido_externo">pedido_externo</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#perfil_acesso">perfil_acesso</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#prato">prato</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#prato_ingrediente">prato_ingrediente</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#prato_restricao">prato_restricao</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#reserva">reserva</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#restricao_alimentar">restricao_alimentar</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#servico_estacionamento">servico_estacionamento</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#unidade_medida">unidade_medida</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#usuario">usuario</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+                
+                <section class="mb-5 p-4 rounded card-custom shadow-sm">
+                    <h1 class="h3 fw-bold text-primary-custom mb-3">Don Carlini Ristorante - Sistema de Gestão Operacional e Vendas</h1>
+                    <p class="lead text-muted">
+                        <strong>Escopo:</strong> Sistema ERP integrado para controle rigoroso de estoque, fichas técnicas de massas artesanais, comandas de salão, reservas, programa de fidelidade e faturamento operacional do restaurante[cite: 4].
+                    </p>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p><strong>Tecnologia:</strong> MySQL 8.0+ (InnoDB, UTF-8 MB4)</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p><strong>Professor Orientador:</strong> Prof. Dr. Diego Carvalho</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p><strong>Arquiteto de Dados:</strong> Thiago Pereira Sampaio</p>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <h6 class="fw-bold">Equipe de Desenvolvimento & Governança:</h6>
+                        <ul class="small text-muted mb-0">
+                            <li>Vinicius Ramiro dos Santos Cunha – Database Analyst</li>
+                            <li>Thiago Pereira Sampaio – Data Architect</li>
+                            <li>Victor Ribeiro Perillo – Domain Expert</li>
+                            <li>Antonio Nsona Senga – Business Analyst</li>
+                            <li>Luís Henrique Lopes Gomes – Data Quality Analyst</li>
+                            <li>Rogério Duarte Lira – Data Quality Analyst</li>
+                            <li>Robert Aparecido Bezerra de Freitas – Process Analyst</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <div class="d-flex flex-wrap gap-3 mb-4 align-items-center justify-content-between p-3 rounded card-custom shadow-sm">
+                    <div class="d-flex gap-2 flex-grow-1">
+                        <input type="text" id="searchInput" class="form-control" placeholder="Pesquisar por tabela, coluna ou regra de negócio...">
+                    </div>
+                    <div class="d-flex gap-2">
+                        <a href="./docs/Especificacao_Requisitos_Regras_Negocio_BD_ERP.pdf" class="btn btn-primary-custom text-white" download>
+                            <i class="fa-solid fa-file-pdf me-2"></i>Baixar Especificação (PDF)
+                        </a>
+                        <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#derModal">
+                            <i class="fa-solid fa-sitemap me-2"></i>Visualizar DER
+                        </button>
+                    </div>
+                </div>
+
+                <div id="dictionary-content">
+
+                    <section id="categoria_ingrediente" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">categoria_ingrediente</h3>
+                        <p class="text-muted">Armazena as categorias de classificação dos ingredientes e insumos de estoque (ex: laticínios, hortifrúti, farinhas).</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr>
+                                        <th>Atributo</th>
+                                        <th>Descrição / Regra de Negócio</th>
+                                        <th>Tipo e Tamanho</th>
+                                        <th>Constraints</th>
+                                        <th>Privacidade (LGPD)</th>
+                                        <th>Linhagem</th>
+                                        <th>Controle de Acesso (RBAC)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>id_categoria_ingrediente</code></td>
+                                        <td>Identificador único sequencial da categoria de ingrediente.</td>
+                                        <td>INT</td>
+                                        <td><strong>[PK]</strong>, AUTO_INCREMENT</td>
+                                        <td><span class="badge bg-success-custom">N/A</span></td>
+                                        <td>Origem interna (Sistema)</td>
+                                        <td>Gestor de Estoque, Gerente</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>nome_categoria</code></td>
+                                        <td>Nome descritivo da categoria de insumo.</td>
+                                        <td>VARCHAR(100)</td>
+                                        <td><strong>[NOT NULL]</strong>, <strong>[UNIQUE]</strong></td>
+                                        <td><span class="badge bg-success-custom">N/A</span></td>
+                                        <td>Entrada manual pelo Gestor de Estoque</td>
+                                        <td>Gestor de Estoque, Gerente</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>ativo</code></td>
+                                        <td>Flag de controle de exclusão lógica (1 = Ativo, 0 = Inativo).</td>
+                                        <td>TINYINT(1)</td>
+                                        <td><strong>[NOT NULL]</strong>, DEFAULT '1'</td>
+                                        <td><span class="badge bg-success-custom">N/A</span></td>
+                                        <td>Gerenciado pelo sistema</td>
+                                        <td>Gestor de Estoque, Gerente</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="categoria_prato" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">categoria_prato</h3>
+                        <p class="text-muted">Classificação dos itens do cardápio em categorias operacionais (massas, antipasti, dolci, bevande).</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr>
+                                        <th>Atributo</th>
+                                        <th>Descrição / Regra de Negócio</th>
+                                        <th>Tipo e Tamanho</th>
+                                        <th>Constraints</th>
+                                        <th>Privacidade (LGPD)</th>
+                                        <th>Linhagem</th>
+                                        <th>Controle de Acesso (RBAC)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>id_categoria_prato</code></td>
+                                        <td>Identificador único da categoria de prato.</td>
+                                        <td>INT</td>
+                                        <td><strong>[PK]</strong>, AUTO_INCREMENT</td>
+                                        <td><span class="badge bg-success-custom">N/A</span></td>
+                                        <td>Origem interna (Sistema)</td>
+                                        <td>Chef, Gerente</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>nome</code></td>
+                                        <td>Nome da categoria no cardápio.</td>
+                                        <td>VARCHAR(100)</td>
+                                        <td><strong>[NOT NULL]</strong>, <strong>[UNIQUE]</strong></td>
+                                        <td><span class="badge bg-success-custom">N/A</span></td>
+                                        <td>Entrada pelo Chef / Gerente</td>
+                                        <td>Chef, Gerente</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>descricao</code></td>
+                                        <td>Descrição detalhada da categoria.</td>
+                                        <td>TEXT</td>
+                                        <td>[NULL]</td>
+                                        <td><span class="badge bg-success-custom">N/A</span></td>
+                                        <td>Entrada pelo Chef / Gerente</td>
+                                        <td>Chef, Gerente</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>ativo</code></td>
+                                        <td>Status de exibição da categoria no cardápio.</td>
+                                        <td>TINYINT(1)</td>
+                                        <td><strong>[NOT NULL]</strong>, DEFAULT '1'</td>
+                                        <td><span class="badge bg-success-custom">N/A</span></td>
+                                        <td>Gerenciado pelo sistema</td>
+                                        <td>Chef, Gerente</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="cliente" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">cliente</h3>
+                        <p class="text-muted">Cadastro centralizado de clientes do restaurante (atendimento presencial, delivery e programa de fidelidade).</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr>
+                                        <th>Atributo</th>
+                                        <th>Descrição / Regra de Negócio</th>
+                                        <th>Tipo e Tamanho</th>
+                                        <th>Constraints</th>
+                                        <th>Privacidade (LGPD)</th>
+                                        <th>Linhagem</th>
+                                        <th>Controle de Acesso (RBAC)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>id_cliente</code></td>
+                                        <td>Identificador único do cliente.</td>
+                                        <td>INT</td>
+                                        <td><strong>[PK]</strong>, AUTO_INCREMENT</td>
+                                        <td><span class="badge bg-success-custom">N/A</span></td>
+                                        <td>Origem interna</td>
+                                        <td>Atendente, Caixa, Gerente</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>nome</code></td>
+                                        <td>Primeiro nome do cliente.</td>
+                                        <td>VARCHAR(100)</td>
+                                        <td><strong>[NOT NULL]</strong></td>
+                                        <td><span class="badge bg-warning text-dark">DP</span></td>
+                                        <td>Cadastro direto pelo cliente ou atendente</td>
+                                        <td>Atendente, Caixa, Gerente</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>sobrenome</code></td>
+                                        <td>Sobrenome do cliente.</td>
+                                        <td>VARCHAR(100)</td>
+                                        <td><strong>[NOT NULL]</strong></td>
+                                        <td><span class="badge bg-warning text-dark">DP</span></td>
+                                        <td>Cadastro direto pelo cliente ou atendente</td>
+                                        <td>Atendente, Caixa, Gerente</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>cpf</code></td>
+                                        <td>CPF do cliente para fins de nota fiscal e clube de fidelidade.</td>
+                                        <td>VARCHAR(14)</td>
+                                        <td>[NULL], <strong>[UNIQUE]</strong></td>
+                                        <td><span class="badge bg-danger">DPS</span></td>
+                                        <td>Fornecido pelo cliente</td>
+                                        <td>Atendente, Caixa, Gerente</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>email</code></td>
+                                        <td>E-mail de contato do cliente.</td>
+                                        <td>VARCHAR(255)</td>
+                                        <td>[NULL], <strong>[UNIQUE]</strong></td>
+                                        <td><span class="badge bg-warning text-dark">DP</span></td>
+                                        <td>Fornecido pelo cliente</td>
+                                        <td>Atendente, Caixa, Gerente</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>telefone</code></td>
+                                        <td>Telefone / WhatsApp de contato e confirmação de reservas.</td>
+                                        <td>VARCHAR(20)</td>
+                                        <td>[NULL]</td>
+                                        <td><span class="badge bg-warning text-dark">DP</span></td>
+                                        <td>Fornecido pelo cliente</td>
+                                        <td>Atendente, Caixa, Gerente</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="cliente_fidelidade" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">cliente_fidelidade</h3>
+                        <p class="text-muted">Gerencia a carteira de pontos e a validade anual do programa de fidelidade Clube Don Carlini.</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr>
+                                        <th>Atributo</th>
+                                        <th>Descrição / Regra de Negócio</th>
+                                        <th>Tipo e Tamanho</th>
+                                        <th>Constraints</th>
+                                        <th>Privacidade (LGPD)</th>
+                                        <th>Linhagem</th>
+                                        <th>Controle de Acesso (RBAC)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>id_cliente_fidelidade</code></td>
+                                        <td>Identificador único da carteira de fidelidade.</td>
+                                        <td>INT</td>
+                                        <td><strong>[PK]</strong>, AUTO_INCREMENT</td>
+                                        <td><span class="badge bg-success-custom">N/A</span></td>
+                                        <td>Gerado pelo sistema</td>
+                                        <td>Caixa, Gerente</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>id_cliente</code></td>
+                                        <td>Referência ao cliente proprietário da carteira.</td>
+                                        <td>INT</td>
+                                        <td><strong>[NOT NULL]</strong>, <strong>[FK]</strong>, <strong>[UNIQUE]</strong></td>
+                                        <td><span class="badge bg-warning text-dark">DP</span></td>
+                                        <td>Tabela `cliente`</td>
+                                        <td>Caixa, Gerente</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>saldo_pontos</code></td>
+                                        <td>Saldo atual de pontos acumulados (R$ 1,00 = 1 Ponto).</td>
+                                        <td>INT</td>
+                                        <td><strong>[NOT NULL]</strong>, DEFAULT '0'</td>
+                                        <td><span class="badge bg-success-custom">N/A</span></td>
+                                        <td>Calculado automaticamente no fechamento de conta</td>
+                                        <td>Caixa, Gerente</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>data_validade</code></td>
+                                        <td>Data limite de validade dos pontos acumulados.</td>
+                                        <td>DATE</td>
+                                        <td><strong>[NOT NULL]</strong></td>
+                                        <td><span class="badge bg-success-custom">N/A</span></td>
+                                        <td>Atribuído pelo sistema</td>
+                                        <td>Caixa, Gerente</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="conta" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">conta</h3>
+                        <p class="text-muted">Representa a comanda ou consumo consolidado de uma mesa ou cliente, englobando taxas, acréscimos e descontos.</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr>
+                                        <th>Atributo</th>
+                                        <th>Descrição / Regra de Negócio</th>
+                                        <th>Tipo e Tamanho</th>
+                                        <th>Constraints</th>
+                                        <th>Privacidade (LGPD)</th>
+                                        <th>Linhagem</th>
+                                        <th>Controle de Acesso (RBAC)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>id_conta</code></td><td>Identificador único da conta.</td><td>INT</td><td><strong>[PK]</strong>, AUTO_INCREMENT</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Atendente, Caixa, Gerente</td></tr>
+                                    <tr><td><code>id_mesa</code></td><td>Mesa associada ao consumo presencial.</td><td>INT</td><td>[NULL], <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `mesa`</td><td>Atendente, Caixa</td></tr>
+                                    <tr><td><code>id_cliente</code></td><td>Cliente vinculado à conta.</td><td>INT</td><td>[NULL], <strong>[FK]</strong></td><td><span class="badge bg-warning text-dark">DP</span></td><td>Tabela `cliente`</td><td>Atendente, Caixa</td></tr>
+                                    <tr><td><code>id_cupom_desconto</code></td><td>Cupom promocional aplicado.</td><td>INT</td><td>[NULL], <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `cupom_desconto`</td><td>Caixa, Gerente</td></tr>
+                                    <tr><td><code>id_servico_estacionamento</code></td><td>Tarifa de estacionamento aplicada.</td><td>INT</td><td>[NULL], <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `servico_estacionamento`</td><td>Caixa, Gerente</td></tr>
+                                    <tr><td><code>aberta_em</code></td><td>Data e hora de abertura da comanda.</td><td>DATETIME</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Automático</td><td>Atendente, Caixa</td></tr>
+                                    <tr><td><code>fechada_em</code></td><td>Data e hora de encerramento da conta.</td><td>DATETIME</td><td>[NULL]</td><td><span class="badge bg-success-custom">N/A</span></td><td>Automático no pagamento</td><td>Caixa, Gerente</td></tr>
+                                    <tr><td><code>status_conta</code></td><td>Status operacional (ABERTA, FECHADA, CANCELADA).</td><td>ENUM</td><td><strong>[NOT NULL]</strong>, DEFAULT 'ABERTA'</td><td><span class="badge bg-success-custom">N/A</span></td><td>Fluxo de caixa</td><td>Atendente, Caixa, Gerente</td></tr>
+                                    <tr><td><code>desconto_total</code></td><td>Valor total de descontos concedidos.</td><td>DECIMAL(10,2)</td><td><strong>[NOT NULL]</strong>, DEFAULT '0.00'</td><td><span class="badge bg-success-custom">N/A</span></td><td>Calculado</td><td>Caixa, Gerente</td></tr>
+                                    <tr><td><code>acrescimo_total</code></td><td>Valor total de acréscimos ou taxas (ex: taxa de serviço 10%).</td><td>DECIMAL(10,2)</td><td><strong>[NOT NULL]</strong>, DEFAULT '0.00'</td><td><span class="badge bg-success-custom">N/A</span></td><td>Calculado</td><td>Caixa, Gerente</td></tr>
+                                    <tr><td><code>valor_estacionamento</code></td><td>Valor do serviço de valet/estacionamento cobrado.</td><td>DECIMAL(10,2)</td><td><strong>[NOT NULL]</strong>, DEFAULT '0.00'</td><td><span class="badge bg-success-custom">N/A</span></td><td>Calculado</td><td>Caixa, Gerente</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="cupom_desconto" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">cupom_desconto</h3>
+                        <p class="text-muted">Parâmetros de cupons promocionais e parcerias comerciais com regras de vigência e horários.</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr><th>Atributo</th><th>Descrição / Regra de Negócio</th><th>Tipo e Tamanho</th><th>Constraints</th><th>Privacidade (LGPD)</th><th>Linhagem</th><th>Controle de Acesso (RBAC)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>id_cupom_desconto</code></td><td>Identificador único do cupom.</td><td>INT</td><td><strong>[PK]</strong>, AUTO_INCREMENT</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Gerente</td></tr>
+                                    <tr><td><code>codigo</code></td><td>Código alfanumérico do cupom.</td><td>VARCHAR(50)</td><td><strong>[NOT NULL]</strong>, <strong>[UNIQUE]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Marketing / Gerência</td><td>Gerente</td></tr>
+                                    <tr><td><code>descricao</code></td><td>Descrição e regras do cupom.</td><td>TEXT</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Marketing / Gerência</td><td>Gerente</td></tr>
+                                    <tr><td><code>nome_parceiro</code></td><td>Nome da empresa parceira (se aplicável).</td><td>VARCHAR(100)</td><td>[NULL]</td><td><span class="badge bg-success-custom">N/A</span></td><td>Marketing / Gerência</td><td>Gerente</td></tr>
+                                    <tr><td><code>tipo_desconto</code></td><td>Tipo de desconto (PERCENTUAL, VALOR_FIXO).</td><td>ENUM</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Marketing / Gerência</td><td>Gerente</td></tr>
+                                    <tr><td><code>valor_desconto</code></td><td>Valor ou percentual do desconto.</td><td>DECIMAL(10,2)</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Marketing / Gerência</td><td>Gerente</td></tr>
+                                    <tr><td><code>data_inicio</code></td><td>Data inicial de validade do cupom.</td><td>DATE</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Marketing / Gerência</td><td>Gerente</td></tr>
+                                    <tr><td><code>data_fim</code></td><td>Data final de validade do cupom.</td><td>DATE</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Marketing / Gerência</td><td>Gerente</td></tr>
+                                    <tr><td><code>hora_inicio</code></td><td>Hora inicial permitida para uso.</td><td>TIME</td><td>[NULL]</td><td><span class="badge bg-success-custom">N/A</span></td><td>Marketing / Gerência</td><td>Gerente</td></tr>
+                                    <tr><td><code>hora_fim</code></td><td>Hora final permitida para uso.</td><td>TIME</td><td>[NULL]</td><td><span class="badge bg-success-custom">N/A</span></td><td>Marketing / Gerência</td><td>Gerente</td></tr>
+                                    <tr><td><code>ativo</code></td><td>Status do cupom (1 = Ativo, 0 = Inativo).</td><td>TINYINT(1)</td><td><strong>[NOT NULL]</strong>, DEFAULT '1'</td><td><span class="badge bg-success-custom">N/A</span></td><td>Gerência</td><td>Gerente</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="cupom_dia_semana" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">cupom_dia_semana</h3>
+                        <p class="text-muted">Associação de restrição de dias da semana em que o cupom de desconto é válido.</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr><th>Atributo</th><th>Descrição / Regra de Negócio</th><th>Tipo e Tamanho</th><th>Constraints</th><th>Privacidade (LGPD)</th><th>Linhagem</th><th>Controle de Acesso (RBAC)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>id_cupom_desconto</code></td><td>Referência ao cupom.</td><td>INT</td><td><strong>[PK]</strong>, <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `cupom_desconto`</td><td>Gerente</td></tr>
+                                    <tr><td><code>dia_semana</code></td><td>Dia da semana válido (SEGUNDA a DOMINGO).</td><td>ENUM</td><td><strong>[PK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Configuração de cupom</td><td>Gerente</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="fornecedor" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">fornecedor</h3>
+                        <p class="text-muted">Cadastro de parceiros homologados e fornecedores de insumos, massas e bebidas.</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr><th>Atributo</th><th>Descrição / Regra de Negócio</th><th>Tipo e Tamanho</th><th>Constraints</th><th>Privacidade (LGPD)</th><th>Linhagem</th><th>Controle de Acesso (RBAC)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>id_fornecedor</code></td><td>Identificador único do fornecedor.</td><td>INT</td><td><strong>[PK]</strong>, AUTO_INCREMENT</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Gestor de Estoque, Gerente</td></tr>
+                                    <tr><td><code>nome</code></td><td>Razão social ou nome fantasia do fornecedor.</td><td>VARCHAR(150)</td><td><strong>[NOT NULL]</strong>, <strong>[UNIQUE]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Cadastro de compras</td><td>Gestor de Estoque, Gerente</td></tr>
+                                    <tr><td><code>documento_fiscal</code></td><td>CNPJ ou documento fiscal do fornecedor.</td><td>VARCHAR(20)</td><td><strong>[NOT NULL]</strong>, <strong>[UNIQUE]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Documento fiscal</td><td>Gestor de Estoque, Gerente</td></tr>
+                                    <tr><td><code>contato</code></td><td>Informações de contato (telefone/e-mail).</td><td>VARCHAR(50)</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-warning text-dark">DP</span></td><td>Cadastro</td><td>Gestor de Estoque, Gerente</td></tr>
+                                    <tr><td><code>ativo</code></td><td>Status do fornecedor (1 = Ativo, 0 = Inativo).</td><td>TINYINT(1)</td><td><strong>[NOT NULL]</strong>, DEFAULT '1'</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Gestor de Estoque, Gerente</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="funcionario" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">funcionario</h3>
+                        <p class="text-muted">Registro dos colaboradores do restaurante e seus respectivos cargos operacionais.</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr><th>Atributo</th><th>Descrição / Regra de Negócio</th><th>Tipo e Tamanho</th><th>Constraints</th><th>Privacidade (LGPD)</th><th>Linhagem</th><th>Controle de Acesso (RBAC)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>id_funcionario</code></td><td>Identificador único do funcionário.</td><td>INT</td><td><strong>[PK]</strong>, AUTO_INCREMENT</td><td><span class="badge bg-success-custom">N/A</span></td><td>RH / Sistema</td><td>Gerente</td></tr>
+                                    <tr><td><code>nome</code></td><td>Nome do funcionário.</td><td>VARCHAR(100)</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-warning text-dark">DP</span></td><td>RH</td><td>Gerente</td></tr>
+                                    <tr><td><code>sobrenome</code></td><td>Sobrenome do funcionário.</td><td>VARCHAR(100)</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-warning text-dark">DP</span></td><td>RH</td><td>Gerente</td></tr>
+                                    <tr><td><code>cpf</code></td><td>CPF do funcionário.</td><td>VARCHAR(14)</td><td><strong>[NOT NULL]</strong>, <strong>[UNIQUE]</strong></td><td><span class="badge bg-danger">DPS</span></td><td>RH</td><td>Gerente</td></tr>
+                                    <tr><td><code>email</code></td><td>E-mail corporativo.</td><td>VARCHAR(255)</td><td><strong>[NOT NULL]</strong>, <strong>[UNIQUE]</strong></td><td><span class="badge bg-warning text-dark">DP</span></td><td>RH</td><td>Gerente</td></tr>
+                                    <tr><td><code>telefone</code></td><td>Telefone de contato.</td><td>VARCHAR(20)</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-warning text-dark">DP</span></td><td>RH</td><td>Gerente</td></tr>
+                                    <tr><td><code>cargo</code></td><td>Cargo (GERENTE, CHEF, GARCOM, ATENDENTE, CAIXA, COZINHEIRO, BARMAN, GESTOR_ESTOQUE).</td><td>ENUM</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>RH</td><td>Gerente</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="historico_status_pedidos" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">historico_status_pedidos</h3>
+                        <p class="text-muted">Trilha de auditoria das transições de status de pedidos e itens na cozinha (KDS).</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr><th>Atributo</th><th>Descrição / Regra de Negócio</th><th>Tipo e Tamanho</th><th>Constraints</th><th>Privacidade (LGPD)</th><th>Linhagem</th><th>Controle de Acesso (RBAC)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>id_historico_status_pedido</code></td><td>Identificador único do histórico.</td><td>INT</td><td><strong>[PK]</strong>, AUTO_INCREMENT</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Cozinha, Gerente</td></tr>
+                                    <tr><td><code>id_pedido</code></td><td>Referência ao pedido afetado.</td><td>INT</td><td>[NULL], <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `pedido`</td><td>Cozinha, Gerente</td></tr>
+                                    <tr><td><code>id_item_pedido</code></td><td>Referência ao item do pedido afetado.</td><td>INT</td><td>[NULL], <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `item_pedido`</td><td>Cozinha, Gerente</td></tr>
+                                    <tr><td><code>status_anterior</code></td><td>Status prévio.</td><td>ENUM</td><td>[NULL]</td><td><span class="badge bg-success-custom">N/A</span></td><td>Automático</td><td>Cozinha, Gerente</td></tr>
+                                    <tr><td><code>status_atual</code></td><td>Novo status assumido.</td><td>ENUM</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Automático</td><td>Cozinha, Gerente</td></tr>
+                                    <tr><td><code>alterado_em</code></td><td>Data e hora da alteração.</td><td>DATETIME</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Automático</td><td>Cozinha, Gerente</td></tr>
+                                    <tr><td><code>id_usuario</code></td><td>Usuário responsável pela alteração.</td><td>INT</td><td><strong>[NOT NULL]</strong>, <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `usuario`</td><td>Cozinha, Gerente</td></tr>
+                                    <tr><td><code>motivo</code></td><td>Justificativa da alteração (se houver).</td><td>TEXT</td><td>[NULL]</td><td><span class="badge bg-success-custom">N/A</span></td><td>Operador</td><td>Cozinha, Gerente</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="ingrediente" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">ingrediente</h3>
+                        <p class="text-muted">Cadastro de matérias-primas e insumos utilizados nas fichas técnicas das massas e pratos.</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr><th>Atributo</th><th>Descrição / Regra de Negócio</th><th>Tipo e Tamanho</th><th>Constraints</th><th>Privacidade (LGPD)</th><th>Linhagem</th><th>Controle de Acesso (RBAC)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>id_ingrediente</code></td><td>Identificador único do ingrediente.</td><td>INT</td><td><strong>[PK]</strong>, AUTO_INCREMENT</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Gestor de Estoque, Chef</td></tr>
+                                    <tr><td><code>id_categoria_ingrediente</code></td><td>Categoria do insumo.</td><td>INT</td><td><strong>[NOT NULL]</strong>, <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `categoria_ingrediente`</td><td>Gestor de Estoque</td></tr>
+                                    <tr><td><code>id_unidade_medida</code></td><td>Unidade de medida padrão.</td><td>INT</td><td><strong>[NOT NULL]</strong>, <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `unidade_medida`</td><td>Gestor de Estoque</td></tr>
+                                    <tr><td><code>nome</code></td><td>Nome do ingrediente.</td><td>VARCHAR(150)</td><td><strong>[NOT NULL]</strong>, <strong>[UNIQUE]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Cadastro</td><td>Gestor de Estoque</td></tr>
+                                    <tr><td><code>descricao</code></td><td>Detalhes do ingrediente.</td><td>TEXT</td><td>[NULL]</td><td><span class="badge bg-success-custom">N/A</span></td><td>Cadastro</td><td>Gestor de Estoque</td></tr>
+                                    <tr><td><code>quantidade_atual</code></td><td>Saldo atual em estoque.</td><td>DECIMAL(10,2)</td><td><strong>[NOT NULL]</strong>, DEFAULT '0.00'</td><td><span class="badge bg-success-custom">N/A</span></td><td>Calculado por lotes</td><td>Gestor de Estoque</td></tr>
+                                    <tr><td><code>estoque_minimo</code></td><td>Limite mínimo de segurança.</td><td>DECIMAL(10,2)</td><td><strong>[NOT NULL]</strong>, DEFAULT '0.00'</td><td><span class="badge bg-success-custom">N/A</span></td><td>Parâmetro de estoque</td><td>Gestor de Estoque</td></tr>
+                                    <tr><td><code>dias_antecedencia_validade</code></td><td>Dias de antecedência para alerta de validade.</td><td>INT</td><td><strong>[NOT NULL]</strong>, DEFAULT '0'</td><td><span class="badge bg-success-custom">N/A</span></td><td>Parâmetro de qualidade</td><td>Gestor de Estoque</td></tr>
+                                    <tr><td><code>ativo</code></td><td>Status do ingrediente (1 = Ativo, 0 = Inativo).</td><td>TINYINT(1)</td><td><strong>[NOT NULL]</strong>, DEFAULT '1'</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Gestor de Estoque</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="item_pedido" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">item_pedido</h3>
+                        <p class="text-muted">Itens individuais lançados em um pedido, com congelamento do preço unitário na venda.</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr><th>Atributo</th><th>Descrição / Regra de Negócio</th><th>Tipo e Tamanho</th><th>Constraints</th><th>Privacidade (LGPD)</th><th>Linhagem</th><th>Controle de Acesso (RBAC)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>id_item_pedido</code></td><td>Identificador único do item no pedido.</td><td>INT</td><td><strong>[PK]</strong>, AUTO_INCREMENT</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Garçom, Atendente, Cozinha</td></tr>
+                                    <tr><td><code>id_pedido</code></td><td>Referência ao pedido principal.</td><td>INT</td><td><strong>[NOT NULL]</strong>, <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `pedido`</td><td>Garçom, Atendente</td></tr>
+                                    <tr><td><code>id_prato</code></td><td>Prato ou item de cardápio solicitado.</td><td>INT</td><td><strong>[NOT NULL]</strong>, <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `prato`</td><td>Garçom, Atendente</td></tr>
+                                    <tr><td><code>quantidade</code></td><td>Quantidade solicitada (> 0).</td><td>INT</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Lançamento</td><td>Garçom, Atendente</td></tr>
+                                    <tr><td><code>observacoes</code></td><td>Observações de preparo (ex: sem cebola).</td><td>TEXT</td><td>[NULL]</td><td><span class="badge bg-success-custom">N/A</span></td><td>Lançamento</td><td>Garçom, Atendente</td></tr>
+                                    <tr><td><code>preco_unitario</code></td><td>Preço unitário congelado no momento do pedido.</td><td>DECIMAL(10,2)</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Copiado de `prato.preco_atual`</td><td>Caixa, Gerente</td></tr>
+                                    <tr><td><code>status_item</code></td><td>Status do item (PENDENTE, EM_PREPARO, PRONTO, ENTREGUE, CANCELADO).</td><td>ENUM</td><td><strong>[NOT NULL]</strong>, DEFAULT 'PENDENTE'</td><td><span class="badge bg-success-custom">N/A</span></td><td>KDS / Cozinha</td><td>Cozinha, Garçom</td></tr>
+                                    <tr><td><code>iniciado_preparo_em</code></td><td>Hora de início do preparo na cozinha.</td><td>DATETIME</td><td>[NULL]</td><td><span class="badge bg-success-custom">N/A</span></td><td>KDS</td><td>Cozinha</td></tr>
+                                    <tr><td><code>concluido_em</code></td><td>Hora de conclusão do prato.</td><td>DATETIME</td><td>[NULL]</td><td><span class="badge bg-success-custom">N/A</span></td><td>KDS</td><td>Cozinha</td></tr>
+                                    <tr><td><code>baixa_estoque_processada</code></td><td>Flag indicando se a baixa de insumos foi efetuada (0 = Não, 1 = Sim).</td><td>TINYINT(1)</td><td><strong>[NOT NULL]</strong>, DEFAULT '0'</td><td><span class="badge bg-success-custom">N/A</span></td><td>Trigger / Sistema de Estoque</td><td>Sistema</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="local_armazenamento" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">local_armazenamento</h3>
+                        <p class="text-muted">Locais físicos de estocagem de insumos e produtos (câmara fria, congelador, estoque seco, bar, empório).</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr><th>Atributo</th><th>Descrição / Regra de Negócio</th><th>Tipo e Tamanho</th><th>Constraints</th><th>Privacidade (LGPD)</th><th>Linhagem</th><th>Controle de Acesso (RBAC)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>id_local</code></td><td>Identificador único do local.</td><td>INT</td><td><strong>[PK]</strong>, AUTO_INCREMENT</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Gestor de Estoque, Gerente</td></tr>
+                                    <tr><td><code>nome</code></td><td>Nome do local de armazenamento.</td><td>VARCHAR(100)</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Cadastro</td><td>Gestor de Estoque, Gerente</td></tr>
+                                    <tr><td><code>tipo_local</code></td><td>Tipo estrutural (CAMARA_FRIA, CONGELADOR, ESTOQUE_SECO, BAR, EMPORIO).</td><td>ENUM</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Cadastro</td><td>Gestor de Estoque, Gerente</td></tr>
+                                    <tr><td><code>ativo</code></td><td>Status do local (1 = Ativo, 0 = Inativo).</td><td>TINYINT(1)</td><td><strong>[NOT NULL]</strong>, DEFAULT '1'</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Gestor de Estoque, Gerente</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="log_auditoria" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">log_auditoria</h3>
+                        <p class="text-muted">Trilha imutável de auditoria e segurança para operações sensíveis, estornos, cancelamentos e descontos.</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr><th>Atributo</th><th>Descrição / Regra de Negócio</th><th>Tipo e Tamanho</th><th>Constraints</th><th>Privacidade (LGPD)</th><th>Linhagem</th><th>Controle de Acesso (RBAC)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>id_log_auditoria</code></td><td>Identificador único do log.</td><td>INT</td><td><strong>[PK]</strong>, AUTO_INCREMENT</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Gerente, Auditor</td></tr>
+                                    <tr><td><code>id_usuario</code></td><td>Usuário responsável pela operação.</td><td>INT</td><td>[NULL], <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `usuario`</td><td>Gerente, Auditor</td></tr>
+                                    <tr><td><code>tabela_afetada</code></td><td>Nome da tabela que sofreu alteração.</td><td>VARCHAR(100)</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Trigger do Banco de Dados</td><td>Gerente, Auditor</td></tr>
+                                    <tr><td><code>id_registro_afetado</code></td><td>Identificador polimórfico do registro afetado.</td><td>INT</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Trigger do Banco de Dados</td><td>Gerente, Auditor</td></tr>
+                                    <tr><td><code>operacao</code></td><td>Tipo de operação (INSERT, UPDATE, DELETE, CANCELAMENTO, ESTORNO, DESCONTO).</td><td>ENUM</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Trigger do Banco de Dados</td><td>Gerente, Auditor</td></tr>
+                                    <tr><td><code>data_hora</code></td><td>Data e hora exata da ocorrência.</td><td>DATETIME</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Automático</td><td>Gerente, Auditor</td></tr>
+                                    <tr><td><code>valor_anterior</code></td><td>Estado anterior do dado (JSON/Texto).</td><td>TEXT</td><td>[NULL]</td><td><span class="badge bg-warning text-dark">DP</span></td><td>Trigger do Banco de Dados</td><td>Gerente, Auditor</td></tr>
+                                    <tr><td><code>valor_novo</code></td><td>Novo estado do dado (JSON/Texto).</td><td>TEXT</td><td>[NULL]</td><td><span class="badge bg-warning text-dark">DP</span></td><td>Trigger do Banco de Dados</td><td>Gerente, Auditor</td></tr>
+                                    <tr><td><code>descricao</code></td><td>Descrição detalhada do evento.</td><td>TEXT</td><td>[NULL]</td><td><span class="badge bg-success-custom">N/A</span></td><td>Trigger / Operador</td><td>Gerente, Auditor</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="lote_estoque" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">lote_estoque</h3>
+                        <p class="text-muted">Controle rigoroso de lotes de insumos, datas de validade, custos unitários e locais de estocagem.</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr><th>Atributo</th><th>Descrição / Regra de Negócio</th><th>Tipo e Tamanho</th><th>Constraints</th><th>Privacidade (LGPD)</th><th>Linhagem</th><th>Controle de Acesso (RBAC)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>id_lote</code></td><td>Identificador único do lote.</td><td>INT</td><td><strong>[PK]</strong>, AUTO_INCREMENT</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Gestor de Estoque</td></tr>
+                                    <tr><td><code>id_ingrediente</code></td><td>Insumo associado ao lote.</td><td>INT</td><td><strong>[NOT NULL]</strong>, <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `ingrediente`</td><td>Gestor de Estoque</td></tr>
+                                    <tr><td><code>id_local</code></td><td>Local de armazenamento físico.</td><td>INT</td><td><strong>[NOT NULL]</strong>, <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `local_armazenamento`</td><td>Gestor de Estoque</td></tr>
+                                    <tr><td><code>id_fornecedor</code></td><td>Fornecedor de origem.</td><td>INT</td><td><strong>[NOT NULL]</strong>, <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `fornecedor`</td><td>Gestor de Estoque</td></tr>
+                                    <tr><td><code>cod_lote</code></td><td>Código do lote informado na nota fiscal.</td><td>VARCHAR(50)</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Nota Fiscal / Recebimento</td><td>Gestor de Estoque</td></tr>
+                                    <tr><td><code>recebido_em</code></td><td>Data e hora do recebimento físico.</td><td>DATETIME</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Recebimento</td><td>Gestor de Estoque</td></tr>
+                                    <tr><td><code>data_fabricacao</code></td><td>Data de fabricação do insumo.</td><td>DATE</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Nota Fiscal</td><td>Gestor de Estoque</td></tr>
+                                    <tr><td><code>data_validade</code></td><td>Data limite de validade do lote.</td><td>DATE</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Nota Fiscal</td><td>Gestor de Estoque</td></tr>
+                                    <tr><td><code>quantidade_atual</code></td><td>Quantidade física atual disponível no lote.</td><td>DECIMAL(10,2)</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Movimentações de estoque</td><td>Gestor de Estoque</td></tr>
+                                    <tr><td><code>quantidade_recebida</code></td><td>Quantidade inicial recebida.</td><td>DECIMAL(10,2)</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Recebimento</td><td>Gestor de Estoque</td></tr>
+                                    <tr><td><code>custo_unitario</code></td><td>Custo de aquisição por unidade.</td><td>DECIMAL(10,2)</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Nota Fiscal</td><td>Gestor de Estoque, Gerente</td></tr>
+                                    <tr><td><code>status_lote</code></td><td>Status do lote (DISPONIVEL, BLOQUEADO, VENCIDO, ESGOTADO).</td><td>ENUM</td><td><strong>[NOT NULL]</strong>, DEFAULT 'DISPONIVEL'</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema / Validade</td><td>Gestor de Estoque</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="mesa" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">mesa</h3>
+                        <p class="text-muted">Cadastro das mesas do salão, capacidade de atendimento, salão e acessibilidade.</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr><th>Atributo</th><th>Descrição / Regra de Negócio</th><th>Tipo e Tamanho</th><th>Constraints</th><th>Privacidade (LGPD)</th><th>Linhagem</th><th>Controle de Acesso (RBAC)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>id_mesa</code></td><td>Identificador único da mesa.</td><td>INT</td><td><strong>[PK]</strong>, AUTO_INCREMENT</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Atendente, Gerente</td></tr>
+                                    <tr><td><code>numero</code></td><td>Número identificador da mesa.</td><td>INT</td><td><strong>[NOT NULL]</strong>, <strong>[UNIQUE]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Planta do Salão</td><td>Atendente, Gerente</td></tr>
+                                    <tr><td><code>salao</code></td><td>Setor do salão (TERREO, SUPERIOR, AREA_EXTERNA).</td><td>ENUM</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Planta do Salão</td><td>Atendente, Gerente</td></tr>
+                                    <tr><td><code>capacidade</code></td><td>Capacidade máxima de assentos.</td><td>INT</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Planta do Salão</td><td>Atendente, Gerente</td></tr>
+                                    <tr><td><code>ativa</code></td><td>Status operacional da mesa (1 = Ativa, 0 = Inativa).</td><td>TINYINT(1)</td><td><strong>[NOT NULL]</strong>, DEFAULT '1'</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Atendente, Gerente</td></tr>
+                                    <tr><td><code>acessivel</code></td><td>Indicador de rota acessível para cadeirantes (1 = Sim, 0 = Não).</td><td>TINYINT(1)</td><td><strong>[NOT NULL]</strong>, DEFAULT '1'</td><td><span class="badge bg-success-custom">N/A</span></td><td>Infraestrutura</td><td>Atendente, Gerente</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="movimentacao_estoque" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">movimentacao_estoque</h3>
+                        <p class="text-muted">Registro de todas as entradas, baixas, perdas, ajustes e estornos ocorridos nos lotes de insumos.</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr><th>Atributo</th><th>Descrição / Regra de Negócio</th><th>Tipo e Tamanho</th><th>Constraints</th><th>Privacidade (LGPD)</th><th>Linhagem</th><th>Controle de Acesso (RBAC)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>id_movimentacao</code></td><td>Identificador único da movimentação.</td><td>INT</td><td><strong>[PK]</strong>, AUTO_INCREMENT</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Gestor de Estoque, Gerente</td></tr>
+                                    <tr><td><code>id_lote</code></td><td>Lote de estoque movimentado.</td><td>INT</td><td><strong>[NOT NULL]</strong>, <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `lote_estoque`</td><td>Gestor de Estoque</td></tr>
+                                    <tr><td><code>id_usuario</code></td><td>Usuário responsável pela movimentação.</td><td>INT</td><td><strong>[NOT NULL]</strong>, <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `usuario`</td><td>Gestor de Estoque, Gerente</td></tr>
+                                    <tr><td><code>quantidade</code></td><td>Quantidade movimentada.</td><td>DECIMAL(10,2)</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Operação</td><td>Gestor de Estoque</td></tr>
+                                    <tr><td><code>tipo_movimentacao</code></td><td>Tipo (ENTRADA, BAIXA, PERDA, AJUSTE, ESTORNO).</td><td>ENUM</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Operação</td><td>Gestor de Estoque, Gerente</td></tr>
+                                    <tr><td><code>data_hora</code></td><td>Data e hora da movimentação.</td><td>DATETIME</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Automático</td><td>Gestor de Estoque</td></tr>
+                                    <tr><td><code>motivo</code></td><td>Justificativa obrigatória da movimentação.</td><td>TEXT</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Operador</td><td>Gestor de Estoque, Gerente</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="movimentacao_estoque_pedido" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">movimentacao_estoque_pedido</h3>
+                        <p class="text-muted">Vínculo explícito entre a baixa automática de estoque e o item do pedido correspondente na cozinha.</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr><th>Atributo</th><th>Descrição / Regra de Negócio</th><th>Tipo e Tamanho</th><th>Constraints</th><th>Privacidade (LGPD)</th><th>Linhagem</th><th>Controle de Acesso (RBAC)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>id_movimentacao_pedido</code></td><td>Identificador único da relação.</td><td>INT</td><td><strong>[PK]</strong>, AUTO_INCREMENT</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Sistema</td></tr>
+                                    <tr><td><code>id_movimentacao</code></td><td>Movimentação de estoque gerada.</td><td>INT</td><td><strong>[NOT NULL]</strong>, <strong>[FK]</strong>, <strong>[UNIQUE]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `movimentacao_estoque`</td><td>Sistema</td></tr>
+                                    <tr><td><code>id_item_pedido</code></td><td>Item do pedido que motivou a baixa.</td><td>INT</td><td><strong>[NOT NULL]</strong>, <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `item_pedido`</td><td>Sistema</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="movimentacao_financeira" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">movimentacao_financeira</h3>
+                        <p class="text-muted">Controle de fluxo de caixa, recebimentos, estornos, sangrias e suprimentos do operador de caixa.</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr><th>Atributo</th><th>Descrição / Regra de Negócio</th><th>Tipo e Tamanho</th><th>Constraints</th><th>Privacidade (LGPD)</th><th>Linhagem</th><th>Controle de Acesso (RBAC)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>id_movimentacao_financeira</code></td><td>Identificador único da movimentação.</td><td>INT</td><td><strong>[PK]</strong>, AUTO_INCREMENT</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Caixa, Gerente</td></tr>
+                                    <tr><td><code>id_pagamento</code></td><td>Pagamento vinculado (se aplicável).</td><td>INT</td><td>[NULL], <strong>[FK]</strong>, <strong>[UNIQUE]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `pagamento`</td><td>Caixa, Gerente</td></tr>
+                                    <tr><td><code>id_usuario</code></td><td>Operador responsável pelo caixa.</td><td>INT</td><td><strong>[NOT NULL]</strong>, <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `usuario`</td><td>Caixa, Gerente</td></tr>
+                                    <tr><td><code>tipo_movimento</code></td><td>Tipo (RECEBIMENTO, ESTORNO, ESTACIONAMENTO, SANGRIA, SUPRIMENTO).</td><td>ENUM</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Operação de Caixa</td><td>Caixa, Gerente</td></tr>
+                                    <tr><td><code>data_hora</code></td><td>Data e hora da movimentação.</td><td>DATETIME</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Automático</td><td>Caixa, Gerente</td></tr>
+                                    <tr><td><code>valor</code></td><td>Valor financeiro movimentado.</td><td>DECIMAL(10,2)</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Operação de Caixa</td><td>Caixa, Gerente</td></tr>
+                                    <tr><td><code>descricao</code></td><td>Descrição detalhada da operação.</td><td>TEXT</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Operador</td><td>Caixa, Gerente</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="pagamento" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">pagamento</h3>
+                        <p class="text-muted">Registro dos pagamentos efetuados para liquidação de contas, formas de pagamento e status.</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr><th>Atributo</th><th>Descrição / Regra de Negócio</th><th>Tipo e Tamanho</th><th>Constraints</th><th>Privacidade (LGPD)</th><th>Linhagem</th><th>Controle de Acesso (RBAC)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>id_pagamento</code></td><td>Identificador único do pagamento.</td><td>INT</td><td><strong>[PK]</strong>, AUTO_INCREMENT</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Caixa, Gerente</td></tr>
+                                    <tr><td><code>id_conta</code></td><td>Conta quitada.</td><td>INT</td><td><strong>[NOT NULL]</strong>, <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `conta`</td><td>Caixa, Gerente</td></tr>
+                                    <tr><td><code>forma_pagamento</code></td><td>Forma utilizada (DINHEIRO, CARTAO_CREDITO, CARTAO_DEBITO, PIX, VOUCHER).</td><td>ENUM</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>PDV</td><td>Caixa, Gerente</td></tr>
+                                    <tr><td><code>valor</code></td><td>Valor pago (> 0).</td><td>DECIMAL(10,2)</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>PDV</td><td>Caixa, Gerente</td></tr>
+                                    <tr><td><code>data_hora</code></td><td>Data e hora do pagamento.</td><td>DATETIME</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Automático</td><td>Caixa, Gerente</td></tr>
+                                    <tr><td><code>status_pagamento</code></td><td>Status (PENDENTE, CONFIRMADO, RECUSADO, ESTORNADO).</td><td>ENUM</td><td><strong>[NOT NULL]</strong>, DEFAULT 'PENDENTE'</td><td><span class="badge bg-success-custom">N/A</span></td><td>PDV / Gateway</td><td>Caixa, Gerente</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="pedido" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">pedido</h3>
+                        <p class="text-muted">Registro unificado de pedidos (interno de salão, retirada ou delivery).</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr><th>Atributo</th><th>Descrição / Regra de Negócio</th><th>Tipo e Tamanho</th><th>Constraints</th><th>Privacidade (LGPD)</th><th>Linhagem</th><th>Controle de Acesso (RBAC)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>id_pedido</code></td><td>Identificador único do pedido.</td><td>INT</td><td><strong>[PK]</strong>, AUTO_INCREMENT</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Garçom, Atendente, Cozinha</td></tr>
+                                    <tr><td><code>id_conta</code></td><td>Conta associada ao pedido.</td><td>INT</td><td>[NULL], <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `conta`</td><td>Garçom, Atendente</td></tr>
+                                    <tr><td><code>tipo_pedido</code></td><td>Tipo de atendimento (INTERNO, RETIRADA, DELIVERY).</td><td>ENUM</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>PDV / Atendimento</td><td>Garçom, Atendente</td></tr>
+                                    <tr><td><code>data_hora</code></td><td>Data e hora do pedido.</td><td>DATETIME</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Automático</td><td>Garçom, Atendente</td></tr>
+                                    <tr><td><code>status_pedido</code></td><td>Status geral (ABERTO, CONFIRMADO, EM_PREPARO, PRONTO, EM_ENTREGA, ENTREGUE, CANCELADO).</td><td>ENUM</td><td><strong>[NOT NULL]</strong>, DEFAULT 'ABERTO'</td><td><span class="badge bg-success-custom">N/A</span></td><td>KDS / Sistema</td><td>Garçom, Cozinha, Atendente</td></tr>
+                                    <tr><td><code>observacoes_gerais</code></td><td>Observações gerais do pedido.</td><td>TEXT</td><td>[NULL]</td><td><span class="badge bg-success-custom">N/A</span></td><td>Atendimento</td><td>Garçom, Atendente</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="pedido_externo" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">pedido_externo</h3>
+                        <p class="text-muted">Detalhes logísticos de pedidos externos (iFood, WhatsApp) e agendamentos de retirada no empório.</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr><th>Atributo</th><th>Descrição / Regra de Negócio</th><th>Tipo e Tamanho</th><th>Constraints</th><th>Privacidade (LGPD)</th><th>Linhagem</th><th>Controle de Acesso (RBAC)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>id_pedido_externo</code></td><td>Identificador único do pedido externo.</td><td>INT</td><td><strong>[PK]</strong>, AUTO_INCREMENT</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Atendente, Entregas</td></tr>
+                                    <tr><td><code>id_pedido</code></td><td>Referência ao pedido principal.</td><td>INT</td><td><strong>[NOT NULL]</strong>, <strong>[FK]</strong>, <strong>[UNIQUE]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `pedido`</td><td>Atendente</td></tr>
+                                    <tr><td><code>id_cliente</code></td><td>Cliente do pedido externo.</td><td>INT</td><td>[NULL], <strong>[FK]</strong></td><td><span class="badge bg-warning text-dark">DP</span></td><td>Tabela `cliente`</td><td>Atendente</td></tr>
+                                    <tr><td><code>canal_pedido</code></td><td>Canal de origem (IFOOD, WHATSAPP, TELEFONE, PRESENCIAL).</td><td>ENUM</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Integração / Atendente</td><td>Atendente</td></tr>
+                                    <tr><td><code>codigo_retirada</code></td><td>Código de verificação para retirada no balcão.</td><td>VARCHAR(50)</td><td>[NULL]</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema de Retirada</td><td>Atendente</td></tr>
+                                    <tr><td><code>nome_cliente</code></td><td>Nome do cliente no canal externo.</td><td>VARCHAR(100)</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-warning text-dark">DP</span></td><td>Canal Externo</td><td>Atendente</td></tr>
+                                    <tr><td><code>telefone_cliente</code></td><td>Telefone de contato do cliente externo.</td><td>VARCHAR(20)</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-warning text-dark">DP</span></td><td>Canal Externo</td><td>Atendente</td></tr>
+                                    <tr><td><code>logradouro_entrega</code></td><td>Endereço de entrega (Logradouro).</td><td>VARCHAR(150)</td><td>[NULL]</td><td><span class="badge bg-warning text-dark">DP</span></td><td>Canal Externo</td><td>Atendente, Entregador</td></tr>
+                                    <tr><td><code>numero_entrega</code></td><td>Número do endereço.</td><td>VARCHAR(20)</td><td>[NULL]</td><td><span class="badge bg-warning text-dark">DP</span></td><td>Canal Externo</td><td>Atendente, Entregador</td></tr>
+                                    <tr><td><code>complemento_entrega</code></td><td>Complemento do endereço.</td><td>VARCHAR(100)</td><td>[NULL]</td><td><span class="badge bg-warning text-dark">DP</span></td><td>Canal Externo</td><td>Atendente, Entregador</td></tr>
+                                    <tr><td><code>bairro_entrega</code></td><td>Bairro de entrega.</td><td>VARCHAR(100)</td><td>[NULL]</td><td><span class="badge bg-warning text-dark">DP</span></td><td>Canal Externo</td><td>Atendente, Entregador</td></tr>
+                                    <tr><td><code>cidade_entrega</code></td><td>Cidade de entrega.</td><td>VARCHAR(100)</td><td>[NULL]</td><td><span class="badge bg-success-custom">N/A</span></td><td>Canal Externo</td><td>Atendente</td></tr>
+                                    <tr><td><code>uf_entrega</code></td><td>UF de entrega.</td><td>CHAR(2)</td><td>[NULL]</td><td><span class="badge bg-success-custom">N/A</span></td><td>Canal Externo</td><td>Atendente</td></tr>
+                                    <tr><td><code>cep_entrega</code></td><td>CEP de entrega.</td><td>CHAR(9)</td><td>[NULL]</td><td><span class="badge bg-warning text-dark">DP</span></td><td>Canal Externo</td><td>Atendente</td></tr>
+                                    <tr><td><code>referencia_entrega</code></td><td>Ponto de referência ou instrução de acesso pelo estacionamento.</td><td>TEXT</td><td>[NULL]</td><td><span class="badge bg-success-custom">N/A</span></td><td>Canal Externo / Regra RN03</td><td>Atendente, Entregador</td></tr>
+                                    <tr><td><code>data_hora_retirada</code></td><td>Data e hora prevista para retirada no empório.</td><td>DATETIME</td><td>[NULL]</td><td><span class="badge bg-success-custom">N/A</span></td><td>Agendamento</td><td>Atendente</td></tr>
+                                    <tr><td><code>distancia_entrega_km</code></td><td>Distância calculada da rota de delivery.</td><td>DECIMAL(10,2)</td><td>[NULL]</td><td><span class="badge bg-success-custom">N/A</span></td><td>API de Geolocalização</td><td>Sistema</td></tr>
+                                    <tr><td><code>raio_maximo_km</code></td><td>Raio máximo de atendimento permitido.</td><td>DECIMAL(10,2)</td><td>[NULL]</td><td><span class="badge bg-success-custom">N/A</span></td><td>Parâmetro Operacional (RN11)</td><td>Sistema, Gerente</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="perfil_acesso" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">perfil_acesso</h3>
+                        <p class="text-muted">Níveis de autorização e perfis de segurança do sistema para controle baseado em papéis (RBAC).</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr><th>Atributo</th><th>Descrição / Regra de Negócio</th><th>Tipo e Tamanho</th><th>Constraints</th><th>Privacidade (LGPD)</th><th>Linhagem</th><th>Controle de Acesso (RBAC)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>id_perfil</code></td><td>Identificador único do perfil de acesso.</td><td>INT</td><td><strong>[PK]</strong>, AUTO_INCREMENT</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Gerente, Administrador</td></tr>
+                                    <tr><td><code>nome</code></td><td>Nome do perfil (ex: Gerente, Caixa, Garçom).</td><td>VARCHAR(100)</td><td><strong>[NOT NULL]</strong>, <strong>[UNIQUE]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Configuração de Segurança</td><td>Gerente, Administrador</td></tr>
+                                    <tr><td><code>descricao</code></td><td>Descrição detalhada das permissões do perfil.</td><td>TEXT</td><td>[NULL]</td><td><span class="badge bg-success-custom">N/A</span></td><td>Configuração de Segurança</td><td>Gerente, Administrador</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="prato" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">prato</h3>
+                        <p class="text-muted">Cardápio de pratos, massas artesanais, bebidas, serviços e produtos de empório, com fracionamento de porção.</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr><th>Atributo</th><th>Descrição / Regra de Negócio</th><th>Tipo e Tamanho</th><th>Constraints</th><th>Privacidade (LGPD)</th><th>Linhagem</th><th>Controle de Acesso (RBAC)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>id_prato</code></td><td>Identificador único do prato ou item.</td><td>INT</td><td><strong>[PK]</strong>, AUTO_INCREMENT</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Chef, Gerente</td></tr>
+                                    <tr><td><code>id_categoria_prato</code></td><td>Categoria do prato.</td><td>INT</td><td><strong>[NOT NULL]</strong>, <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `categoria_prato`</td><td>Chef, Gerente</td></tr>
+                                    <tr><td><code>nome</code></td><td>Nome do prato ou item.</td><td>VARCHAR(150)</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Cardápio</td><td>Chef, Gerente</td></tr>
+                                    <tr><td><code>descricao</code></td><td>Descrição e ingredientes principais.</td><td>TEXT</td><td>[NULL]</td><td><span class="badge bg-success-custom">N/A</span></td><td>Cardápio</td><td>Chef, Gerente</td></tr>
+                                    <tr><td><code>tamanho_porcao</code></td><td>Tamanho da porção (INDIVIDUAL, COMPARTILHAR, UNICO).</td><td>ENUM</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Cardápio / Regra RN07</td><td>Chef, Gerente</td></tr>
+                                    <tr><td><code>preco_atual</code></td><td>Preço de venda atual.</td><td>DECIMAL(10,2)</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Precificação</td><td>Chef, Gerente</td></tr>
+                                    <tr><td><code>tempo_preparo_min</code></td><td>Tempo estimado de preparo em minutos.</td><td>INT</td><td><strong>[NOT NULL]</strong>, DEFAULT '0'</td><td><span class="badge bg-success-custom">N/A</span></td><td>Cozinha</td><td>Chef, Gerente</td></tr>
+                                    <tr><td><code>setor_preparo</code></td><td>Setor responsável (COZINHA, BAR, EMPORIO, NENHUM).</td><td>ENUM</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>KDS / Roteamento</td><td>Chef, Gerente</td></tr>
+                                    <tr><td><code>tipo_item</code></td><td>Tipo do item (PRATO, SERVICO, PRODUTO_EMPORIO).</td><td>ENUM</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Classificação</td><td>Chef, Gerente</td></tr>
+                                    <tr><td><code>ativo</code></td><td>Status de exibição no cardápio (1 = Ativo, 0 = Inativo).</td><td>TINYINT(1)</td><td><strong>[NOT NULL]</strong>, DEFAULT '1'</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Chef, Gerente</td></tr>
+                                    <tr><td><code>criado_em</code></td><td>Data e hora de cadastro do prato.</td><td>DATETIME</td><td><strong>[NOT NULL]</strong>, DEFAULT CURRENT_TIMESTAMP</td><td><span class="badge bg-success-custom">N/A</span></td><td>Automático</td><td>Sistema</td></tr>
+                                    <tr><td><code>atualizado_em</code></td><td>Data e hora da última atualização.</td><td>DATETIME</td><td><strong>[NOT NULL]</strong>, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP</td><td><span class="badge bg-success-custom">N/A</span></td><td>Automático</td><td>Sistema</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="prato_ingrediente" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">prato_ingrediente</h3>
+                        <p class="text-muted">Ficha técnica detalhada vinculando os pratos aos insumos necessários para baixa automática de estoque.</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr><th>Atributo</th><th>Descrição / Regra de Negócio</th><th>Tipo e Tamanho</th><th>Constraints</th><th>Privacidade (LGPD)</th><th>Linhagem</th><th>Controle de Acesso (RBAC)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>id_prato_ingrediente</code></td><td>Identificador único da ficha técnica.</td><td>INT</td><td><strong>[PK]</strong>, AUTO_INCREMENT</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Chef, Gestor de Estoque</td></tr>
+                                    <tr><td><code>id_prato</code></td><td>Prato associado.</td><td>INT</td><td><strong>[NOT NULL]</strong>, <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `prato`</td><td>Chef, Gestor de Estoque</td></tr>
+                                    <tr><td><code>id_ingrediente</code></td><td>Insumo consumido na receita.</td><td>INT</td><td><strong>[NOT NULL]</strong>, <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `ingrediente`</td><td>Chef, Gestor de Estoque</td></tr>
+                                    <tr><td><code>id_unidade_medida</code></td><td>Unidade de medida da porção.</td><td>INT</td><td><strong>[NOT NULL]</strong>, <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `unidade_medida`</td><td>Chef, Gestor de Estoque</td></tr>
+                                    <tr><td><code>quantidade_por_porcao</code></td><td>Quantidade do insumo exigida por porção.</td><td>DECIMAL(10,2)</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Ficha Técnica (Chef)</td><td>Chef, Gestor de Estoque</td></tr>
+                                    <tr><td><code>observacao</code></td><td>Observações de preparo da ficha técnica.</td><td>TEXT</td><td>[NULL]</td><td><span class="badge bg-success-custom">N/A</span></td><td>Ficha Técnica (Chef)</td><td>Chef, Gestor de Estoque</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="prato_restricao" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">prato_restricao</h3>
+                        <p class="text-muted">Associação N:N entre pratos do cardápio e restrições alimentares (ex: sem glúten, vegano, sem lactose).</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr><th>Atributo</th><th>Descrição / Regra de Negócio</th><th>Tipo e Tamanho</th><th>Constraints</th><th>Privacidade (LGPD)</th><th>Linhagem</th><th>Controle de Acesso (RBAC)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>id_prato</code></td><td>Referência ao prato.</td><td>INT</td><td><strong>[PK]</strong>, <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `prato`</td><td>Chef, Gerente</td></tr>
+                                    <tr><td><code>id_restricao</code></td><td>Referência à restrição alimentar.</td><td>INT</td><td><strong>[PK]</strong>, <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `restricao_alimentar`</td><td>Chef, Gerente</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="reserva" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">reserva</h3>
+                        <p class="text-muted">Agendamento de reservas de mesas, controle de tolerância de 15 minutos e status de atendimento.</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr><th>Atributo</th><th>Descrição / Regra de Negócio</th><th>Tipo e Tamanho</th><th>Constraints</th><th>Privacidade (LGPD)</th><th>Linhagem</th><th>Controle de Acesso (RBAC)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>id_reserva</code></td><td>Identificador único da reserva.</td><td>INT</td><td><strong>[PK]</strong>, AUTO_INCREMENT</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Atendente, Gerente</td></tr>
+                                    <tr><td><code>id_mesa</code></td><td>Mesa reservada.</td><td>INT</td><td><strong>[NOT NULL]</strong>, <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `mesa`</td><td>Atendente</td></tr>
+                                    <tr><td><code>id_cliente</code></td><td>Cliente vinculado (opcional).</td><td>INT</td><td>[NULL], <strong>[FK]</strong></td><td><span class="badge bg-warning text-dark">DP</span></td><td>Tabela `cliente`</td><td>Atendente</td></tr>
+                                    <tr><td><code>quantidade</code></td><td>Número de pessoas na reserva.</td><td>INT</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Solicitação</td><td>Atendente</td></tr>
+                                    <tr><td><code>nome_cliente</code></td><td>Nome do cliente responsável pela reserva.</td><td>VARCHAR(100)</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-warning text-dark">DP</span></td><td>Solicitação</td><td>Atendente</td></tr>
+                                    <tr><td><code>telefone_cliente</code></td><td>Telefone de contato para confirmação.</td><td>VARCHAR(20)</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-warning text-dark">DP</span></td><td>Solicitação</td><td>Atendente</td></tr>
+                                    <tr><td><code>data_hora</code></td><td>Data e hora agendada para a reserva.</td><td>DATETIME</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Solicitação</td><td>Atendente</td></tr>
+                                    <tr><td><code>descricao_reserva</code></td><td>Observações especiais (ex: aniversário).</td><td>TEXT</td><td>[NULL]</td><td><span class="badge bg-success-custom">N/A</span></td><td>Solicitação</td><td>Atendente</td></tr>
+                                    <tr><td><code>status_reserva</code></td><td>Status (PENDENTE, CONFIRMADA, REALIZADA, CANCELADA, NAO_COMPARECEU).</td><td>ENUM</td><td><strong>[NOT NULL]</strong>, DEFAULT 'PENDENTE'</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema / Atendimento</td><td>Atendente, Gerente</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="restricao_alimentar" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">restricao_alimentar</h3>
+                        <p class="text-muted">Cadastro de restrições alimentares e dietas especiais (celíacos, intolerância à lactose, veganos).</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr><th>Atributo</th><th>Descrição / Regra de Negócio</th><th>Tipo e Tamanho</th><th>Constraints</th><th>Privacidade (LGPD)</th><th>Linhagem</th><th>Controle de Acesso (RBAC)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>id_restricao</code></td><td>Identificador único da restrição.</td><td>INT</td><td><strong>[PK]</strong>, AUTO_INCREMENT</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Chef, Gerente</td></tr>
+                                    <tr><td><code>nome_restricao</code></td><td>Nome da restrição alimentar.</td><td>VARCHAR(100)</td><td><strong>[NOT NULL]</strong>, <strong>[UNIQUE]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Nutrição / Chef</td><td>Chef, Gerente</td></tr>
+                                    <tr><td><code>descricao</code></td><td>Detalhes sobre a restrição.</td><td>TEXT</td><td>[NULL]</td><td><span class="badge bg-success-custom">N/A</span></td><td>Nutrição / Chef</td><td>Chef, Gerente</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="servico_estacionamento" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">servico_estacionamento</h3>
+                        <p class="text-muted">Parametrizador de tarifas dinâmicas de valet e estacionamento conforme tipo de dia e horário.</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr><th>Atributo</th><th>Descrição / Regra de Negócio</th><th>Tipo e Tamanho</th><th>Constraints</th><th>Privacidade (LGPD)</th><th>Linhagem</th><th>Controle de Acesso (RBAC)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>id_servico_estacionamento</code></td><td>Identificador único do serviço.</td><td>INT</td><td><strong>[PK]</strong>, AUTO_INCREMENT</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Gerente</td></tr>
+                                    <tr><td><code>descricao</code></td><td>Descrição da tarifa (ex: Almoço Útil, Noite/Fim de Semana).</td><td>TEXT</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Parâmetro Financeiro</td><td>Gerente</td></tr>
+                                    <tr><td><code>tipo_dia</code></td><td>Tipo de dia (DIA_UTIL, FIM_DE_SEMANA, FERIADO).</td><td>ENUM</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Parâmetro Financeiro</td><td>Gerente</td></tr>
+                                    <tr><td><code>hora_inicio</code></td><td>Hora inicial de vigência da tarifa.</td><td>TIME</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Parâmetro Financeiro</td><td>Gerente</td></tr>
+                                    <tr><td><code>hora_fim</code></td><td>Hora final de vigência da tarifa.</td><td>TIME</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Parâmetro Financeiro</td><td>Gerente</td></tr>
+                                    <tr><td><code>valor_tarifa</code></td><td>Valor monetário da tarifa de estacionamento.</td><td>DECIMAL(10,2)</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Parâmetro Financeiro</td><td>Gerente</td></tr>
+                                    <tr><td><code>data_inicio_vigencia</code></td><td>Data de início da vigência da tarifa.</td><td>DATE</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Parâmetro Financeiro</td><td>Gerente</td></tr>
+                                    <tr><td><code>data_fim_vigencia</code></td><td>Data de término da vigência da tarifa.</td><td>DATE</td><td>[NULL]</td><td><span class="badge bg-success-custom">N/A</span></td><td>Parâmetro Financeiro</td><td>Gerente</td></tr>
+                                    <tr><td><code>ativo</code></td><td>Status da tarifa (1 = Ativa, 0 = Inativa).</td><td>TINYINT(1)</td><td><strong>[NOT NULL]</strong>, DEFAULT '1'</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Gerente</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="unidade_medida" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">unidade_medida</h3>
+                        <p class="text-muted">Padronização de unidades de medida para controle de insumos e fichas técnicas (massa, volume, unidade).</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr><th>Atributo</th><th>Descrição / Regra de Negócio</th><th>Tipo e Tamanho</th><th>Constraints</th><th>Privacidade (LGPD)</th><th>Linhagem</th><th>Controle de Acesso (RBAC)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>id_unidade_medida</code></td><td>Identificador único da unidade.</td><td>INT</td><td><strong>[PK]</strong>, AUTO_INCREMENT</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Gestor de Estoque, Gerente</td></tr>
+                                    <tr><td><code>sigla</code></td><td>Sigla da unidade (ex: kg, g, l, ml, un).</td><td>VARCHAR(10)</td><td><strong>[NOT NULL]</strong>, <strong>[UNIQUE]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Padrão de Medida</td><td>Gestor de Estoque, Gerente</td></tr>
+                                    <tr><td><code>unidade</code></td><td>Nome por extenso (ex: Quilograma, Litro, Unidade).</td><td>VARCHAR(50)</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Padrão de Medida</td><td>Gestor de Estoque, Gerente</td></tr>
+                                    <tr><td><code>tipo_grandeza</code></td><td>Grandeza física (MASSA, VOLUME, UNIDADE).</td><td>ENUM</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Padrão de Medida</td><td>Gestor de Estoque, Gerente</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="usuario" class="mb-5 card-custom p-4 rounded shadow-sm">
+                        <h3 class="fw-bold text-primary-custom">usuario</h3>
+                        <p class="text-muted">Credenciais de autenticação e acesso dos operadores do sistema, vinculados a funcionários e perfis.</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-dark-custom">
+                                    <tr><th>Atributo</th><th>Descrição / Regra de Negócio</th><th>Tipo e Tamanho</th><th>Constraints</th><th>Privacidade (LGPD)</th><th>Linhagem</th><th>Controle de Acesso (RBAC)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>id_usuario</code></td><td>Identificador único do usuário.</td><td>INT</td><td><strong>[PK]</strong>, AUTO_INCREMENT</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Administrador, Gerente</td></tr>
+                                    <tr><td><code>id_funcionario</code></td><td>Funcionário associado.</td><td>INT</td><td><strong>[NOT NULL]</strong>, <strong>[FK]</strong>, <strong>[UNIQUE]</strong></td><td><span class="badge bg-warning text-dark">DP</span></td><td>Tabela `funcionario`</td><td>Administrador, Gerente</td></tr>
+                                    <tr><td><code>id_perfil</code></td><td>Perfil de acesso atribuído.</td><td>INT</td><td><strong>[NOT NULL]</strong>, <strong>[FK]</strong></td><td><span class="badge bg-success-custom">N/A</span></td><td>Tabela `perfil_acesso`</td><td>Administrador, Gerente</td></tr>
+                                    <tr><td><code>login</code></td><td>Login de acesso ao sistema.</td><td>VARCHAR(100)</td><td><strong>[NOT NULL]</strong>, <strong>[UNIQUE]</strong></td><td><span class="badge bg-warning text-dark">DP</span></td><td>Cadastro</td><td>Administrador, Gerente</td></tr>
+                                    <tr><td><code>senha</code></td><td>Hash seguro da senha de acesso.</td><td>VARCHAR(255)</td><td><strong>[NOT NULL]</strong></td><td><span class="badge bg-danger">DPS (Autenticação)</span></td><td>Cadastro</td><td>Administrador, Gerente</td></tr>
+                                    <tr><td><code>ativo</code></td><td>Status do usuário (1 = Ativo, 0 = Inativo).</td><td>TINYINT(1)</td><td><strong>[NOT NULL]</strong>, DEFAULT '1'</td><td><span class="badge bg-success-custom">N/A</span></td><td>Sistema</td><td>Administrador, Gerente</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div class="modal fade" id="derModal" tabindex="-1" aria-labelledby="derModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title" id="derModalLabel"><i class="fa-solid fa-sitemap me-2"></i>Diagrama Entidade-Relacionamento (DER) - Don Carlini Ristorante</h5>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-outline-light btn-sm" id="zoomInBtn" title="Zoom In"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+                        <button class="btn btn-outline-light btn-sm" id="zoomOutBtn" title="Zoom Out"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+                        <button class="btn btn-outline-light btn-sm" id="resetZoomBtn" title="Resetar Zoom"><i class="fa-solid fa-rotate"></i></button>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                    </div>
+                </div>
+                <div class="modal-body d-flex justify-content-center align-items-center overflow-hidden position-relative p-0" id="derModalBody">
+                    <div id="derPanzoomContainer" class="w-100 h-100 d-flex justify-content-center align-items-center">
+                        <img src="./assets/der_mysql_ristorante2.png" alt="DER Don Carlini Ristorante" id="derImage" class="img-fluid" style="max-width: none; cursor: grab;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>

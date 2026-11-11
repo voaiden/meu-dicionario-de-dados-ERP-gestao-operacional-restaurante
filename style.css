@@ -1,0 +1,138 @@
+
+:root {
+    --bg-main: #f1e4db;
+    --primary-dark: #003322;
+    --primary-hover: #004d33;
+    --card-bg: #ffffff;
+    --text-color: #212529;
+    --sidebar-bg: #ffffff;
+    --border-color: #dee2e6;
+}
+
+[data-theme="dark"] {
+    --bg-main: #121816;
+    --primary-dark: #00ffaa;
+    --primary-hover: #00cc88;
+    --card-bg: #1a2421;
+    --text-color: #f1e4db;
+    --sidebar-bg: #16201c;
+    --border-color: #2c3e35;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-color);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.topbar {
+    background-color: var(--primary-dark) !important;
+    color: #ffffff;
+    z-index: 1030;
+}
+
+.sidebar {
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--border-color);
+    height: calc(100vh - 56px);
+    position: fixed;
+    top: 56px;
+    left: 0;
+    overflow-y: auto;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.sidebar .nav-link {
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    margin-bottom: 2px;
+    font-size: 0.9rem;
+}
+
+.sidebar .nav-link:hover {
+    background-color: rgba(0, 51, 34, 0.1);
+    color: var(--primary-dark);
+}
+
+.main-container {
+    margin-top: 56px;
+}
+
+@media (min-width: 768px) {
+    main {
+        margin-left: 16.66667%;
+    }
+}
+
+.card-custom {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.text-primary-custom {
+    color: var(--primary-dark) !important;
+}
+
+.btn-primary-custom {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    color: #ffffff;
+}
+
+.btn-primary-custom:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+}
+
+.table-dark-custom {
+    background-color: var(--primary-dark) !important;
+    color: #ffffff !important;
+}
+
+.table-dark-custom th {
+    background-color: var(--primary-dark) !important;
+    color: #ffffff !important;
+    border-color: var(--primary-dark) !important;
+}
+
+.bg-success-custom {
+    background-color: #198754 !important;
+    color: white;
+}
+
+table {
+    color: var(--text-color) !important;
+}
+
+#derModalBody {
+    background-color: #0b0f0e;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#derPanzoomContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#derImage {
+    max-width: none !important;
+    max-height: 85vh;
+    width: auto;
+    height: auto;
+    cursor: grab;
+    transform-origin: center center;
+}
+
+#derImage:active {
+    cursor: grabbing;
+}
